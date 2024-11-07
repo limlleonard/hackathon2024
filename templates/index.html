@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Flask App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Flask App</h1>
+    </header>
+
+    <main>
+        <div class="pdf">
+            <div class="drop-area" id="drop-area">
+                Drag & Drop PDF oder klicken
+                <input type="file" id="fileElem" multiple accept="*/*" onchange="handleFiles(this.files)">
+            </div>
+            <div class="btns">
+                <button type="button" onclick="deletePDF()">PDF delete</button>
+                <button type="button" onclick="embedPDF()">PDF embed</button>
+            </div>
+        </div>
+        <div id="ctn-select">
+            <label for="selectPDF">PDF Dateien: </label>
+            <div id="ctn-select-rp">
+                <select id="selectPDF" onchange="selectPDF()">
+                    {% for file in files %}
+                    <option value="{{ file }}">{{ file }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div id="qa">
+            <input type="text" id="question" placeholder="Enter some text" />
+            <button onclick="ask()">Ask</button>
+            <p id="result"></p>
+        </div>
+        <p>This is a basic Flask application with HTML, CSS, and JavaScript.</p>
+        <button onclick="showAlert()">Click me</button>
+    </main>
+
+    <footer>
+        <p>© 2024 My Flask App</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
