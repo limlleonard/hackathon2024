@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, redirect, jsonify
 from funk import Embeder
 
 dir_pdf='./files'
-os.mkdir(dir_pdf, exist_ok=True)
+os.makedirs(dir_pdf, exist_ok=True)
 api1=os.getenv('openai_api')
 embeder1=Embeder(dir_pdf)
 app = Flask(__name__)
